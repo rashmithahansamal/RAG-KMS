@@ -1,17 +1,11 @@
-# Install packages one by one to identify any issues
-flask==2.3.3
-werkzeug==2.3.7
-python-dotenv==0.19.0
-boto3==1.28.0
-openai==0.28.0
-pypdf==3.9.0
-
-# Try langchain and chromadb
-langchain==0.0.267
-chromadb==0.4.0
-
-# Install tiktoken (this might need a newer version)
-tiktoken>=0.5.1
-
-# Install unstructured
-unstructured==0.10.30
+langchain>=0.1.0
+langchain-community>=0.0.38
+langchain-openai>=0.0.5
+openai>=1.10.0,<2.0.0
+langsmith>=0.1.0
+pydantic>=2.0.0
+flask
+boto3
+chromadb
+python-dotenv
+gdown

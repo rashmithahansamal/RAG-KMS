@@ -1,6 +1,6 @@
 import chromadb
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
 
 class VectorStore:
     def __init__(self, path):
@@ -12,5 +12,5 @@ class VectorStore:
     def add_documents(self, documents):
         self.vector_store.add_documents(documents)
 
-    def similarity_search(self, query, k=4):
+    def similarity_search(self, query, k=3):
         return self.vector_store.similarity_search(query, k=k)

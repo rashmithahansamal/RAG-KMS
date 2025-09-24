@@ -2,9 +2,10 @@ from flask import Flask, request, render_template, jsonify
 from models.vector_store import VectorStore
 from services.storage_service import S3Storage
 from services.llm_service import LLMService
+from services.Q_bot import EducationalLLMService 
 from config import Config
 import os
-from langchain.document_loaders import TextLoader, PyPDFLoader
+from langchain_community.document_loaders import TextLoader, PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import tempfile
 import logging
@@ -16,6 +17,7 @@ app = Flask(__name__)
 vector_store = VectorStore(Config.VECTOR_DB_PATH)
 storage_service = S3Storage()
 llm_service = LLMService(vector_store)
+Q_bot = EducationalLLMService(vector_store)  # NEW: Initialize the educational LLM service
 
 @app.route('/')
 def index():
@@ -119,6 +121,18 @@ def upload_document():
     
 
 
+# @app.route('/query', methods=['POST'])
+# def query():
+#     data = request.json
+#     if 'question' not in data:
+#         return jsonify({'error': 'No question provided'}), 400
+
+#     try:
+#         response = llm_service.get_response(data['question'])
+#         return jsonify({'response': response})
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
+    
 @app.route('/query', methods=['POST'])
 def query():
     data = request.json
@@ -126,7 +140,7 @@ def query():
         return jsonify({'error': 'No question provided'}), 400
 
     try:
-        response = llm_service.get_response(data['question'])
+        response = Q_bot.get_course_answer(data['question'])
         return jsonify({'response': response})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
