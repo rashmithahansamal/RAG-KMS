@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Management System</title>
+    <title>Research Paper Assistant</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,12 +14,12 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-brain"></i>
-                <h1>KnowledgeBase AI</h1>
+                <h1>Research Paper Assistant</h1>
             </div>
             <nav class="nav">
-                <span class="nav-item active">Dashboard</span>
-                <span class="nav-item">Documents</span>
-                <span class="nav-item">Analytics</span>
+                <span class="nav-item active">Quiz Bot</span>
+                <span class="nav-item" onclick="window.location.href='/summarizer'"> Paper Summarizer</span>
+                <span class="nav-item" onclick="window.location.href='/methodology'">Extract Methodology</span>
             </nav>
         </div>
     </header>
@@ -49,7 +49,7 @@
                 <div id="activity-list">
                     <div class="activity-item">
                         <i class="fas fa-upload"></i>
-                        <span>Welcome to KnowledgeBase AI</span>
+                        <span>Welcome to Research Paper Assistant</span>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template, jsonify
 from models.vector_store import VectorStore
 from services.storage_service import S3Storage
-from services.llm_service import LLMService
+# from services.llm_service import LLMService
 from services.Q_bot import EducationalLLMService 
+from services.researchpanalysis import ResearchPaperAnalyzer
 from config import Config
 import os
 from langchain_community.document_loaders import TextLoader, PyPDFLoader
@@ -16,12 +17,22 @@ import logging
 app = Flask(__name__)
 vector_store = VectorStore(Config.VECTOR_DB_PATH)
 storage_service = S3Storage()
-llm_service = LLMService(vector_store)
+# llm_service = LLMService(vector_store)
 Q_bot = EducationalLLMService(vector_store)  # NEW: Initialize the educational LLM service
+research_analyzer = ResearchPaperAnalyzer(Q_bot, vector_store)  # Initialize ResearchPaperAnalyzer
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/summarizer')
+def summarizer():
+    return render_template('summarizer.html')
+
+@app.route('/methodology')
+def methodology():
+    return render_template('methodology.html')
 
 
 # Configure logging
@@ -145,6 +156,116 @@ def query():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Research Paper Summarizer Routes
+@app.route('/summarizer/upload', methods=['POST'])
+def summarizer_upload():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+        
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
 
+        if not file.filename.endswith('.pdf'):
+            return jsonify({'error': 'Only PDF files are supported'}), 400
+
+        # Upload to S3 first
+        file.seek(0)
+        storage_service.upload_file(file, file.filename)
+        
+        return jsonify({
+            'message': 'Research paper uploaded successfully',
+            'filename': file.filename
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/summarizer/summarize', methods=['POST'])
+def summarizer_summarize():
+    try:
+        data = request.json
+        filename = data.get('filename')
+        title = data.get('title', 'Research Paper')
+        authors = data.get('authors', 'Unknown')
+        journal = data.get('journal', 'Unknown')
+        year = data.get('year', 'Unknown')
+        
+        # Create paper metadata
+        paper_metadata = {
+            'title': title,
+            'authors': authors,
+            'journal': journal,
+            'year': year
+        }
+        
+        # Get the uploaded file from S3 or temp storage
+        # For now, we'll use the research analyzer's process_research_paper method
+        # This would need the actual file object, so we'll simulate the summary generation
+        
+        # Use the research analyzer to generate summary
+        result = research_analyzer._generate_paper_summary("", paper_metadata)
+        
+        return jsonify({
+            'summary': result['answer'] if isinstance(result, dict) and 'answer' in result else str(result),
+            'filename': filename,
+            'metadata': {
+                'title': title,
+                'authors': authors,
+                'journal': journal,
+                'year': year
+            }
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Research Methodology Extraction Routes
+@app.route('/methodology/upload', methods=['POST'])
+def methodology_upload():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+        
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+
+        if not file.filename.endswith('.pdf'):
+            return jsonify({'error': 'Only PDF files are supported'}), 400
+
+        # Upload to S3 first
+        file.seek(0)
+        storage_service.upload_file(file, file.filename)
+        
+        return jsonify({
+            'message': 'Research paper uploaded successfully',
+            'filename': file.filename
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/methodology/extract', methods=['POST'])
+def methodology_extract():
+    try:
+        data = request.json
+        filename = data.get('filename')
+        
+        # Use the research analyzer to extract methodology
+        result = research_analyzer.extract_methodology(filename)
+        
+        return jsonify({
+            'methodology': result['answer'] if isinstance(result, dict) and 'answer' in result else str(result),
+            'filename': filename
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug= True)
