@@ -53,7 +53,7 @@ Research Paper Assistant is a sophisticated RAG (Retrieval-Augmented Generation)
 ```mermaid
 graph TB
     A[Frontend - Flask Templates] --> B[Flask Application]
-    B --> C[Research Paper Analyzer]
+    B --> C[Research Paper Assistant]
     B --> E[Vector Store - ChromaDB]
     B --> F[AWS S3 Storage]
     C --> G[OpenAI API]
@@ -62,7 +62,7 @@ graph TB
     style A fill:#3b82f6
     style B fill:#1d4ed8
     style C fill:#2563eb
-    style D fill:#1e3a8a
+   
     style E fill:#1e40af
     style F fill:#f59e0b
     style G fill:#10b981
