@@ -9,7 +9,7 @@
 
 *An AI-powered knowledge management system designed specifically for academic research and paper analysis*
 
-[🚀 Live Demo](#) • [📖 Documentation](#features) • [🐛 Report Bug](https://github.com/rashmithahansamal/RAG-KMS/issues) • [💡 Request Feature](https://github.com/rashmithahansamal/RAG-KMS/issues)
+
 
 </div>
 
@@ -256,19 +256,7 @@ docker build -t research-paper-assistant .
 docker run -d -p 8080:8080 --env-file .env research-paper-assistant
 ```
 
-## 🧪 Testing
 
-```bash
-# Run unit tests
-python -m pytest tests/
-
-# Run integration tests
-python -m pytest tests/integration/
-
-# Check code quality
-flake8 app/
-black app/ --check
-```
 
 ## 🤝 Contributing
 
@@ -284,9 +272,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -296,22 +282,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **AWS** for reliable cloud infrastructure
 - **Flask** community for the excellent web framework
 
-## 📞 Support
 
-- 📧 **Email**: [your-email@example.com](mailto:your-email@example.com)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/rashmithahansamal/RAG-KMS/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/rashmithahansamal/RAG-KMS/discussions)
 
-## 🗺️ Roadmap
 
-- [ ] **Multi-language Support** - Support for research papers in multiple languages
-- [ ] **Advanced Analytics** - Research trend analysis and insights
-- [ ] **Collaboration Features** - Team workspaces and shared documents
-- [ ] **API Development** - RESTful API for external integrations
-- [ ] **Mobile App** - Native mobile applications
-- [ ] **Advanced Search** - Semantic search across document collections
 
----
 
 <div align="center">
 
