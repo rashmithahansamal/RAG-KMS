@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
     min-height: 100vh;
     color: #2d3748;
     line-height: 1.6;
@@ -42,13 +42,13 @@ body {
 
 .logo i {
     font-size: 32px;
-    color: #667eea;
+    color: #1d4ed8;
 }
 
 .logo h1 {
     font-size: 24px;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -68,13 +68,13 @@ body {
 }
 
 .nav-item.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
 }
 
 .nav-item:not(.active):hover {
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
+    background: rgba(30, 58, 138, 0.1);
+    color: #1d4ed8;
 }
 
 /* Main Layout */
@@ -117,7 +117,7 @@ body {
 
 .stat-item i {
     font-size: 24px;
-    color: #667eea;
+    color: #1d4ed8;
     width: 40px;
     text-align: center;
 }
@@ -160,7 +160,7 @@ body {
 }
 
 .activity-item i {
-    color: #667eea;
+    color: #1d4ed8;
     width: 16px;
 }
 
@@ -188,7 +188,7 @@ body {
 }
 
 .card-header {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
     padding: 1.5rem 2rem;
     display: flex;
@@ -222,8 +222,8 @@ body {
 
 .upload-area:hover,
 .upload-area.drag-over {
-    border-color: #667eea;
-    background: rgba(102, 126, 234, 0.05);
+    border-color: #1d4ed8;
+    background: rgba(30, 58, 138, 0.05);
     transform: scale(1.02);
 }
 
@@ -245,7 +245,7 @@ body {
 }
 
 .browse-link {
-    color: #667eea;
+    color: #1d4ed8;
     text-decoration: underline;
     cursor: pointer;
     font-weight: 500;
@@ -274,7 +274,7 @@ body {
 }
 
 .file-item i {
-    color: #667eea;
+    color: #1d4ed8;
     font-size: 18px;
 }
 
@@ -310,9 +310,9 @@ textarea {
 
 textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #1d4ed8;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
 }
 
 textarea::placeholder {
@@ -321,7 +321,7 @@ textarea::placeholder {
 
 /* Buttons */
 .btn-primary {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -338,7 +338,7 @@ textarea::placeholder {
 
 .btn-primary:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(29, 78, 216, 0.4);
 }
 
 .btn-primary:disabled {
@@ -385,8 +385,8 @@ textarea::placeholder {
 }
 
 .question {
-    background: rgba(102, 126, 234, 0.1);
-    border-left: 4px solid #667eea;
+    background: rgba(29, 78, 216, 0.1);
+    border-left: 4px solid #1d4ed8;
 }
 
 .answer {
@@ -397,7 +397,7 @@ textarea::placeholder {
 .question i,
 .answer i {
     margin-right: 8px;
-    color: #667eea;
+    color: #1d4ed8;
 }
 
 .answer i {
@@ -435,7 +435,7 @@ textarea::placeholder {
 
 .loading-spinner i {
     font-size: 32px;
-    color: #667eea;
+    color: #1d4ed8;
     margin-bottom: 1rem;
 }
 
@@ -604,7 +604,7 @@ textarea::placeholder {
 }
 
 .sidebar-header i {
-    color: #667eea;
+    color: #1d4ed8;
     margin-right: 0.5rem;
 }
 
@@ -630,14 +630,14 @@ textarea::placeholder {
 }
 
 .menu-item:hover {
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(29, 78, 216, 0.1);
     transform: translateX(5px);
 }
 
 .menu-item.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
 }
 
 .menu-item i {
@@ -684,7 +684,7 @@ textarea::placeholder {
 }
 
 .metadata-form h4 i {
-    color: #667eea;
+    color: #1d4ed8;
 }
 
 .form-grid {
@@ -716,8 +716,8 @@ textarea::placeholder {
 
 .form-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
 }
 
 .form-input::placeholder {
